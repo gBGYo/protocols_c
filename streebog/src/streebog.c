@@ -502,7 +502,7 @@ void streebog_hash_array(Streebog *sb, uint8_t *array, size_t len, uint8_t *out)
  * @param data_len длина входных данных
  * @param out буффер для хранения результата преобразований над K* и T с помощью ГОСТ Р 34.11-2012 256 бит
  */
-void streebog_hmac_256(uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, hmac_block_t out)
+void streebog_hmac_256(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, hmac_block_t out)
 {
     Streebog sb = {0};
     streebog_new(&sb);
@@ -511,7 +511,8 @@ void streebog_hmac_256(uint8_t *key, size_t key_len, const uint8_t *data, size_t
     // K_star = (0, ..., 0) \in V_512
     memset(k_star, 0, 64);
     // K_star = (K, ..., 0) \in V_512
-    memcpy(k_star, key, (size_t)key_len / 8);
+    size_t key_len_bytes = key_len % 8 > 0 ? key_len / 8 + 1 : key_len / 8;
+    memcpy(k_star, key, key_len_bytes);
 
     size_t tail = data_len > 32 ? data_len : 32;
     uint8_t *tmp = (uint8_t *)malloc((64 + tail) * sizeof(uint8_t));

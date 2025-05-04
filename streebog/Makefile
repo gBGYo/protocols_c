@@ -1,7 +1,7 @@
 CC = gcc
 CXX = g++
-CFLAGS = -Wall -Wextra -I./src -O0 -fsanitize=address
-CXXFLAGS = $(CFLAGS) -fsanitize=address
+CFLAGS = -Wall -Wextra -I./src -O0
+CXXFLAGS = $(CFLAGS)
 LDFLAGS = -L./lib
 LDLIBS = -lstreebog
 
@@ -31,18 +31,18 @@ $(LIB_NAME): $(LIB_OBJS)
 
 # Build the main program
 $(MAIN_EXE): $(MAIN_OBJ) $(LIB_NAME)
-	$(CC) $(LDFLAGS) -o $@ $(MAIN_OBJ) $(LDLIBS) -fsanitize=address
+	$(CC) $(LDFLAGS) -o $@ $(MAIN_OBJ) $(LDLIBS)
 
 # Build and run tests
 test: $(TEST_EXE)
 	./$(TEST_EXE)
 
 $(TEST_EXE): $(TEST_OBJS) $(LIB_NAME)
-	$(CXX) $(LDFLAGS) -o $@ $(TEST_OBJS) $(LDLIBS) $(GTEST_LIBS) -ggdb -fsanitize=address
+	$(CXX) $(LDFLAGS) -o $@ $(TEST_OBJS) $(LDLIBS) $(GTEST_LIBS)
 
 # Compile source files
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@  -ggdb
+	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
