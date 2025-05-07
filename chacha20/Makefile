@@ -1,9 +1,10 @@
 CC = gcc
 CXX = g++
-CFLAGS = -Wall -Wextra -I./src -O0
+CFLAGS = -Wall -Wextra -I./src -I../kdf_tree_gostr3411_2012_256/src -O0
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = -L./lib
-LDLIBS = -lchacha20
+LDLIBS = -lchacha20 -lkdf_tree_gostr3411_2012_256 -lstreebog
+
 
 # Test configuration
 TEST_SRCS = tests/test_chacha20.cpp

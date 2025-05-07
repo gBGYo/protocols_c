@@ -6,7 +6,7 @@ static const uint32_t chacha_constants[4] = {0x61707865, 0x3320646e, 0x79622d32,
 /**
  * @brief Очищает буфер `buf` размером `size` данными из /dev/urandom.
  */
-__attribute__((optimize(0))) static void chacha_clear_buf(uint8_t *buf, ssize_t size)
+__attribute__((optimize(0))) void chacha_clear_buf(uint8_t *buf, ssize_t size)
 {
     if (getrandom(buf, size, 0) != size)
     {
@@ -134,6 +134,37 @@ void chacha_encrypt(ChaCha20 *chacha, const uint8_t *plain_text, uint8_t *cipher
         {
             cipher_text[i + j] = plain_text[i + j] ^ *((uint8_t *)keystream + j);
         }
+    }
+
+    chacha_clear_buf((uint8_t *)keystream, 16 * sizeof(uint32_t));
+    chacha_clear_buf((uint8_t *)state, 16 * sizeof(uint32_t));
+}
+
+/**
+ * @brief Генерирует случайные байты с помощью ChaCha20.
+ *
+ * @param chacha Указатель на структуру `ChaCha20`.
+ * @param rand_bytes Указатель на массив для хранения случайных байтов.
+ * @param len Длина массива `rand_bytes`.
+ */
+void chacha_prng(ChaCha20 *chacha, FILE *fp, size_t len)
+{
+    uint32_t state[16] = {0};
+    chacha_set_initial_state(chacha, state);
+    uint32_t keystream[16] = {0};
+
+    for (size_t i = 0; i < len; i += 64)
+    {
+        chacha_next_block(state, keystream);
+        state[12] = ++chacha->counter;
+        // handle overflow
+        if (state[12] == 0)
+        {
+            state[13]++;
+        }
+
+        size_t block_size = (len - i < 64) ? len - i : 64;
+        fwrite(keystream, sizeof(uint8_t), block_size, fp);
     }
 
     chacha_clear_buf((uint8_t *)keystream, 16 * sizeof(uint32_t));
