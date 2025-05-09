@@ -1,5 +1,5 @@
-#ifndef KUZNYECHIK_H
-#define KUZNYECHIK_H
+#ifndef MAGMA_H
+#define MAGMA_H
 
 #ifdef __cplusplus
 extern "C"
@@ -40,10 +40,11 @@ extern "C"
 
     void magma_encrypt(const uint8_t in[MAGMA_BLOCK_SIZE], uint8_t out[MAGMA_BLOCK_SIZE], magma_iter_keys *iter_keys);
     void magma_ctr_encrypt(Magma *magma, const uint8_t *in, uint8_t *out, size_t len);
-    void magma_ctr_encrypt_file(Magma *magma, FILE *f_in, FILE *f_out);
+    // void magma_ctr_encrypt_file(Magma *magma, FILE *f_in, FILE *f_out);
+    void magma_cmac(Magma *magma, const uint8_t *in, size_t in_len, uint8_t *out, size_t out_len);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // KUZNYECHIK_H
+#endif // MAGMA_H

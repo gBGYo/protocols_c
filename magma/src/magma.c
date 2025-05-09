@@ -85,7 +85,7 @@ void magma_clear(Magma *magma)
  */
 void magma_add_mod32(const uint32_t *a, const uint32_t *b, uint32_t *out)
 {
-    int tmp = 0;
+    uint32_t tmp = 0;
     *out = 0;
     for (int i = 0; i < 4; i++)
     {
@@ -103,7 +103,7 @@ void magma_add_mod32(const uint32_t *a, const uint32_t *b, uint32_t *out)
  */
 void magma_add_mod64(const uint64_t *a, const uint64_t *b, uint64_t *out)
 {
-    int tmp = 0;
+    uint64_t tmp = 0;
     *out = 0;
     for (int i = 0; i < 8; i++)
     {
@@ -113,18 +113,23 @@ void magma_add_mod64(const uint64_t *a, const uint64_t *b, uint64_t *out)
 }
 
 /**
- * @brief Увеличение счетчика на 1
+ * @brief Увеличение счетчика `ctr` на 1
  *
  * @param ctr Счетчик
  */
 void magma_ctr_add(uint8_t *ctr)
 {
-    uint64_t tmp = ((uint64_t)ctr[7] << 56) | ((uint64_t)ctr[6] << 48) | ((uint64_t)ctr[5] << 40) | ((uint64_t)ctr[4] << 32) | ((uint64_t)ctr[3] << 24) | ((uint64_t)ctr[2] << 16) | ((uint64_t)ctr[1] << 8) | (uint64_t)ctr[0];
-    magma_add_mod64(&tmp, (uint64_t[]){1}, &tmp);
+    uint64_t one = 1;
+    uint64_t tmp = ((uint64_t)ctr[0] << 56) | ((uint64_t)ctr[1] << 48) | ((uint64_t)ctr[2] << 40) | ((uint64_t)ctr[3] << 32) | ((uint64_t)ctr[4] << 24) | ((uint64_t)ctr[5] << 16) | ((uint64_t)ctr[6] << 8) | (uint64_t)ctr[7];
+    uint64_t tmp2 = 0;
+    magma_add_mod64(&tmp, &one, &tmp2);
+    tmp = tmp2;
     for (size_t i = 0; i < 8; i++)
     {
-        ctr[i] = (tmp >> (8 * i)) & 0xff;
+        ctr[i] = (tmp >> (8 * (7 - i))) & 0xff;
     }
+    magma_clear_buf((uint8_t *)&tmp, 8);
+    magma_clear_buf((uint8_t *)&tmp2, 8);
 }
 
 /**
@@ -243,11 +248,11 @@ void magma_encrypt(const uint8_t in[MAGMA_BLOCK_SIZE], uint8_t out[MAGMA_BLOCK_S
 void magma_ctr_encrypt(Magma *magma, const uint8_t *in, uint8_t *out, size_t len)
 {
     uint8_t ctr[MAGMA_BLOCK_SIZE] = {0};
+    uint8_t gamma[MAGMA_BLOCK_SIZE] = {0};
     memcpy(ctr, magma->iv, 4);
     size_t bytes_encrypted = 0;
     for (size_t i = 0; i < len; i += 8)
     {
-        uint8_t gamma[MAGMA_BLOCK_SIZE] = {0};
         magma_encrypt(ctr, gamma, &magma->iter_keys);
         magma_ctr_add(ctr);
         if (len - bytes_encrypted < MAGMA_BLOCK_SIZE)
@@ -256,7 +261,6 @@ void magma_ctr_encrypt(Magma *magma, const uint8_t *in, uint8_t *out, size_t len
             {
                 out[i + j] = in[i + j] ^ gamma[j];
             }
-            magma_clear_buf(gamma, MAGMA_BLOCK_SIZE);
             break;
         }
         else
@@ -267,10 +271,110 @@ void magma_ctr_encrypt(Magma *magma, const uint8_t *in, uint8_t *out, size_t len
             }
         }
         bytes_encrypted += 8;
-        magma_clear_buf(gamma, MAGMA_BLOCK_SIZE);
     }
+    magma_clear_buf(gamma, MAGMA_BLOCK_SIZE);
 }
 
 // void magma_ctr_encrypt(FILE *f_in, FILE *f_out, Magma *magma)
 // {
 // }
+
+/**
+ * @brief Выработка имитовставки в режиме CMAC (ГОСТ 34.13-2018 секция 5.6)
+ */
+void magma_cmac(Magma *magma, const uint8_t *in, size_t in_len, uint8_t *out, size_t out_len)
+{
+    uint8_t R[MAGMA_BLOCK_SIZE] = {0};
+    magma_encrypt(R, R, &magma->iter_keys);
+    uint64_t R_value = ((uint64_t)R[0] << 56) | ((uint64_t)R[1] << 48) | ((uint64_t)R[2] << 40) | ((uint64_t)R[3] << 32) | ((uint64_t)R[4] << 24) | ((uint64_t)R[5] << 16) | ((uint64_t)R[6] << 8) | (uint64_t)R[7];
+    uint8_t R_MSB_1 = R[0] & 0x80;
+    if (R_MSB_1 == 0)
+    {
+        R_value <<= 1; // R << 1
+    }
+    else
+    {
+        R_value = (R_value << 1) ^ (uint64_t)0x1b; // (R << 1) ^ B_64 (=0^{59}||11011)
+    }
+    uint8_t K1[MAGMA_BLOCK_SIZE] = {0};
+    for (size_t i = 0; i < 8; i++)
+    {
+        K1[i] = (R_value >> ((7 - i) * 8)) & 0xff;
+    }
+
+    uint64_t K1_value = ((uint64_t)K1[0] << 56) | ((uint64_t)K1[1] << 48) | ((uint64_t)K1[2] << 40) | ((uint64_t)K1[3] << 32) | ((uint64_t)K1[4] << 24) | ((uint64_t)K1[5] << 16) | ((uint64_t)K1[6] << 8) | (uint64_t)K1[7];
+    uint8_t K1_MSB_1 = K1[0] & 0x80;
+    if (K1_MSB_1 == 0)
+    {
+        K1_value <<= 1; // K1 << 1
+    }
+    else
+    {
+        K1_value = (K1_value << 1) ^ (uint64_t)0x1b; // (K1 << 1) ^ B_64 (=0^{59}||11011)
+    }
+    uint8_t K2[MAGMA_BLOCK_SIZE] = {0};
+    for (size_t i = 0; i < 8; i++)
+    {
+        K2[i] = (K1_value >> ((7 - i) * 8)) & 0xff;
+    }
+
+    size_t bytes_encrypted = 0;
+    uint8_t block[MAGMA_BLOCK_SIZE] = {0};
+    for (size_t i = 0; i + MAGMA_BLOCK_SIZE < in_len; i += 8)
+    {
+        for (size_t j = 0; j < 8; j++)
+        {
+            block[j] ^= in[i + j];
+        }
+        magma_encrypt(block, block, &magma->iter_keys);
+        bytes_encrypted += 8;
+    }
+    // Шифруем последний блок
+    if (in_len - bytes_encrypted == MAGMA_BLOCK_SIZE) // Используем K1
+    {
+        for (size_t i = 0; i < 8; i++)
+        {
+            block[i] = in[in_len - MAGMA_BLOCK_SIZE + i] ^ block[i] ^ K1[i];
+        }
+        magma_encrypt(block, block, &magma->iter_keys);
+    }
+    else if (in_len - bytes_encrypted > MAGMA_BLOCK_SIZE) // Используем K2
+    {
+        for (size_t i = 0; i < 8; i++)
+        {
+            block[i] = in[bytes_encrypted + i] ^ block[i] ^ K1[i];
+        }
+        bytes_encrypted += 8;
+        magma_encrypt(block, block, &magma->iter_keys);
+
+        uint8_t tmp[8] = {0};
+        memcpy(tmp, in + bytes_encrypted, in_len - bytes_encrypted);
+        tmp[in_len - bytes_encrypted] = 0x80;
+        for (size_t i = 0; i < 8; i++)
+        {
+            block[i] = tmp[i] ^ block[i] ^ K2[i];
+        }
+        magma_encrypt(block, block, &magma->iter_keys);
+        magma_clear_buf(tmp, MAGMA_BLOCK_SIZE);
+    }
+    else
+    {
+        uint8_t tmp[8] = {0};
+        memcpy(tmp, in + bytes_encrypted, in_len - bytes_encrypted);
+        tmp[in_len - bytes_encrypted] = 0x80;
+        for (size_t i = 0; i < 8; i++)
+        {
+            block[i] = tmp[i] ^ block[i] ^ K2[i];
+        }
+        magma_encrypt(block, block, &magma->iter_keys);
+        magma_clear_buf(tmp, MAGMA_BLOCK_SIZE);
+    }
+    memcpy(out, block, (int)out_len / 8);
+
+    magma_clear_buf(block, MAGMA_BLOCK_SIZE);
+    magma_clear_buf(K2, MAGMA_BLOCK_SIZE);
+    magma_clear_buf((uint8_t *)&K1_value, MAGMA_BLOCK_SIZE);
+    magma_clear_buf(K1, MAGMA_BLOCK_SIZE);
+    magma_clear_buf((uint8_t *)&R_value, MAGMA_BLOCK_SIZE);
+    magma_clear_buf(R, MAGMA_BLOCK_SIZE);
+}

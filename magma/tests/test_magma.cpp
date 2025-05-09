@@ -135,6 +135,48 @@ TEST(MagmaTest, cipher)
     }
 }
 
+// P1 = 92def06b3c130a59,
+// P2 = db54c704f8189d20,
+// P3 = 4a98fb2e67a8024c,
+// P4 = 8912409b17b57e41
+TEST(MagmaTest, cipher_ctr)
+{
+    std::vector<uint8_t> in = hex_to_bytes("92def06b3c130a59db54c704f8189d204a98fb2e67a8024c8912409b17b57e41");
+    std::vector<uint8_t> iv = hex_to_bytes("12345678");
+    std::vector<uint8_t> k_bytes = hex_to_bytes("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
+    std::vector<uint8_t> expected_out = hex_to_bytes("4e98110c97b7b93c3e250d93d6e85d69136d868807b2dbef568eb680ab52a12d");
+    uint8_t out[32] = {0};
+    Magma magma = {0};
+    magma_new(&magma, k_bytes.data());
+    memcpy(magma.iv, iv.data(), 4);
+
+    magma_ctr_encrypt(&magma, in.data(), out, in.size());
+    for (size_t i = 0; i < expected_out.capacity(); i++)
+    {
+        EXPECT_EQ(out[i], expected_out[i]) << "Got:      0x" << std::hex << int(out[i]) << std::endl
+                                           << "Expected: 0x" << std::hex << int(expected_out[i]);
+    }
+}
+
+TEST(MagmaTest, cipher_cmac)
+{
+    std::vector<uint8_t> in = hex_to_bytes("92def06b3c130a59db54c704f8189d204a98fb2e67a8024c8912409b17b57e41");
+    std::vector<uint8_t> iv = hex_to_bytes("12345678");
+    std::vector<uint8_t> k_bytes = hex_to_bytes("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
+    uint8_t expected_out[4] = {0x15, 0x4e, 0x72, 0x10};
+    uint8_t out[4] = {0};
+    Magma magma = {0};
+    magma_new(&magma, k_bytes.data());
+    memcpy(magma.iv, iv.data(), 4);
+
+    magma_cmac(&magma, in.data(), in.size(), out, 32);
+    for (size_t i = 0; i < 4; i++)
+    {
+        EXPECT_EQ(out[i], expected_out[i]) << "Got:      0x" << std::hex << int(out[i]) << std::endl
+                                           << "Expected: 0x" << std::hex << int(expected_out[i]);
+    }
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);
