@@ -3,7 +3,7 @@ CXX = g++
 CFLAGS = -Wall -Wextra -I./src -O2
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = -L./lib
-LDLIBS = -lkuznyechik
+LDLIBS = -lkuznyechik -lkdf_tree_gostr3411_2012_256 -lstreebog
 
 # Test configuration
 TEST_SRCS = tests/test_kuznyechik.cpp

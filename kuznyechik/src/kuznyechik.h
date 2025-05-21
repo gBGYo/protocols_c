@@ -61,6 +61,8 @@ extern "C"
     void kuz_ofb_encrypt(FILE *f_in, FILE *f_out, Kuznyechik *kuz);
 #define kuz_ofb_decrypt(f_in, f_out, kuz) kuz_ofb_encrypt(f_in, f_out, kuz)
 
+    void kuz_ofb_encrypt_key_change(FILE *f_in, FILE *f_out, Kuznyechik *kuz, int cycles, kuz_key_t key);
+
 #ifdef __cplusplus
 }
 #endif
