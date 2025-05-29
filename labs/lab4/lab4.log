@@ -1,0 +1,470 @@
+2025-05-20 20:42:17 INFO  main.c:99: учетная запись `gbgyo` получила доступ
+2025-05-20 20:45:30 INFO  main.c:99: учетная запись `gbgyo` получила доступ
+2025-05-20 20:45:30 TRACE main.c:205: данные были успешно закодированы в CRISP-сообщение
+2025-05-20 20:45:30 TRACE main.c:211: данные были успешно декодированы из CRISP-сообщения
+2025-05-20 20:46:09 INFO  main.c:99: учетная запись `gbgyo` получила доступ
+2025-05-20 20:46:09 TRACE main.c:205: данные были успешно закодированы в CRISP-сообщение
+2025-05-20 20:46:09 TRACE main.c:211: данные были успешно декодированы из CRISP-сообщения
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[0] == pt[0]: 4c != 4c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[1] == pt[1]: 61 != 61
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[2] == pt[2]: 64 != 64
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[3] == pt[3]: 69 != 69
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[4] == pt[4]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[5] == pt[5]: 73 != 73
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[6] == pt[6]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[7] == pt[7]: 61 != 61
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[8] == pt[8]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[9] == pt[9]: 64 != 64
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[10] == pt[10]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[11] == pt[11]: 47 != 47
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[12] == pt[12]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[13] == pt[13]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[14] == pt[14]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[15] == pt[15]: 6c != 6c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[16] == pt[16]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[17] == pt[17]: 6d != 6d
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[18] == pt[18]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[19] == pt[19]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[20] == pt[20]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[21] == pt[21]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[22] == pt[22]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[23] == pt[23]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[24] == pt[24]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[25] == pt[25]: 68 != 68
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[26] == pt[26]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[27] == pt[27]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[28] == pt[28]: 63 != 63
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[29] == pt[29]: 6c != 6c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[30] == pt[30]: 61 != 61
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[31] == pt[31]: 73 != 73
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[32] == pt[32]: 73 != 73
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[33] == pt[33]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[34] == pt[34]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[35] == pt[35]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[36] == pt[36]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[37] == pt[37]: 27 != 27
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[38] == pt[38]: 39 != 39
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[39] == pt[39]: 39 != 39
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[40] == pt[40]: 3a != 3a
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[41] == pt[41]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[42] == pt[42]: 49 != 49
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[43] == pt[43]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[44] == pt[44]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[45] == pt[45]: 49 != 49
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[46] == pt[46]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[47] == pt[47]: 63 != 63
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[48] == pt[48]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[49] == pt[49]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[50] == pt[50]: 6c != 6c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[51] == pt[51]: 64 != 64
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[52] == pt[52]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[53] == pt[53]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[54] == pt[54]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[55] == pt[55]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[56] == pt[56]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[57] == pt[57]: 72 != 72
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[58] == pt[58]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[59] == pt[59]: 79 != 79
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[60] == pt[60]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[61] == pt[61]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[62] == pt[62]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[63] == pt[63]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[64] == pt[64]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[65] == pt[65]: 6c != 6c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[66] == pt[66]: 79 != 79
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[67] == pt[67]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[68] == pt[68]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[69] == pt[69]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[70] == pt[70]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[71] == pt[71]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[72] == pt[72]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[73] == pt[73]: 69 != 69
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[74] == pt[74]: 70 != 70
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[75] == pt[75]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[76] == pt[76]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[77] == pt[77]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[78] == pt[78]: 72 != 72
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[79] == pt[79]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[80] == pt[80]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[81] == pt[81]: 68 != 68
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[82] == pt[82]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[83] == pt[83]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[84] == pt[84]: 66 != 66
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[85] == pt[85]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[86] == pt[86]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[87] == pt[87]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[88] == pt[88]: 72 != 72
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[89] == pt[89]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[90] == pt[90]: 2c != 2c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[91] == pt[91]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[92] == pt[92]: 73 != 73
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[93] == pt[93]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[94] == pt[94]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[95] == pt[95]: 73 != 73
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[96] == pt[96]: 63 != 63
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[97] == pt[97]: 72 != 72
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[98] == pt[98]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[99] == pt[99]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[100] == pt[100]: 6e != 6e
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[101] == pt[101]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[102] == pt[102]: 77 != 77
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[103] == pt[103]: 6f != 6f
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[104] == pt[104]: 75 != 75
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[105] == pt[105]: 6c != 6c
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[106] == pt[106]: 64 != 64
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[107] == pt[107]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[108] == pt[108]: 62 != 62
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[109] == pt[109]: 65 != 65
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[110] == pt[110]: 20 != 20
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[111] == pt[111]: 69 != 69
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[112] == pt[112]: 74 != 74
+
+2025-05-20 20:46:09 TRACE main.c:223: cm.payloadData[113] == pt[113]: 2e != 2e
+
+2025-05-20 20:46:33 INFO  main.c:99: учетная запись `gbgyo` получила доступ
+2025-05-20 20:46:33 TRACE main.c:205: данные были успешно закодированы в CRISP-сообщение
+2025-05-20 20:46:33 TRACE main.c:211: данные были успешно декодированы из CRISP-сообщения
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[0] == pt[0]: 4c != 4c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[1] == pt[1]: 61 != 61
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[2] == pt[2]: 64 != 64
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[3] == pt[3]: 69 != 69
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[4] == pt[4]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[5] == pt[5]: 73 != 73
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[6] == pt[6]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[7] == pt[7]: 61 != 61
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[8] == pt[8]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[9] == pt[9]: 64 != 64
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[10] == pt[10]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[11] == pt[11]: 47 != 47
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[12] == pt[12]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[13] == pt[13]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[14] == pt[14]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[15] == pt[15]: 6c != 6c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[16] == pt[16]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[17] == pt[17]: 6d != 6d
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[18] == pt[18]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[19] == pt[19]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[20] == pt[20]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[21] == pt[21]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[22] == pt[22]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[23] == pt[23]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[24] == pt[24]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[25] == pt[25]: 68 != 68
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[26] == pt[26]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[27] == pt[27]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[28] == pt[28]: 63 != 63
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[29] == pt[29]: 6c != 6c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[30] == pt[30]: 61 != 61
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[31] == pt[31]: 73 != 73
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[32] == pt[32]: 73 != 73
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[33] == pt[33]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[34] == pt[34]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[35] == pt[35]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[36] == pt[36]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[37] == pt[37]: 27 != 27
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[38] == pt[38]: 39 != 39
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[39] == pt[39]: 39 != 39
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[40] == pt[40]: 3a != 3a
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[41] == pt[41]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[42] == pt[42]: 49 != 49
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[43] == pt[43]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[44] == pt[44]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[45] == pt[45]: 49 != 49
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[46] == pt[46]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[47] == pt[47]: 63 != 63
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[48] == pt[48]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[49] == pt[49]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[50] == pt[50]: 6c != 6c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[51] == pt[51]: 64 != 64
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[52] == pt[52]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[53] == pt[53]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[54] == pt[54]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[55] == pt[55]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[56] == pt[56]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[57] == pt[57]: 72 != 72
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[58] == pt[58]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[59] == pt[59]: 79 != 79
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[60] == pt[60]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[61] == pt[61]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[62] == pt[62]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[63] == pt[63]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[64] == pt[64]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[65] == pt[65]: 6c != 6c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[66] == pt[66]: 79 != 79
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[67] == pt[67]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[68] == pt[68]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[69] == pt[69]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[70] == pt[70]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[71] == pt[71]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[72] == pt[72]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[73] == pt[73]: 69 != 69
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[74] == pt[74]: 70 != 70
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[75] == pt[75]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[76] == pt[76]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[77] == pt[77]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[78] == pt[78]: 72 != 72
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[79] == pt[79]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[80] == pt[80]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[81] == pt[81]: 68 != 68
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[82] == pt[82]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[83] == pt[83]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[84] == pt[84]: 66 != 66
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[85] == pt[85]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[86] == pt[86]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[87] == pt[87]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[88] == pt[88]: 72 != 72
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[89] == pt[89]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[90] == pt[90]: 2c != 2c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[91] == pt[91]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[92] == pt[92]: 73 != 73
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[93] == pt[93]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[94] == pt[94]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[95] == pt[95]: 73 != 73
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[96] == pt[96]: 63 != 63
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[97] == pt[97]: 72 != 72
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[98] == pt[98]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[99] == pt[99]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[100] == pt[100]: 6e != 6e
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[101] == pt[101]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[102] == pt[102]: 77 != 77
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[103] == pt[103]: 6f != 6f
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[104] == pt[104]: 75 != 75
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[105] == pt[105]: 6c != 6c
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[106] == pt[106]: 64 != 64
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[107] == pt[107]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[108] == pt[108]: 62 != 62
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[109] == pt[109]: 65 != 65
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[110] == pt[110]: 20 != 20
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[111] == pt[111]: 69 != 69
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[112] == pt[112]: 74 != 74
+2025-05-20 20:46:33 TRACE main.c:223: cm.payloadData[113] == pt[113]: 2e != 2e
+2025-05-20 20:47:01 INFO  main.c:99: учетная запись `gbgyo` получила доступ
+2025-05-20 20:47:01 TRACE main.c:205: данные были успешно закодированы в CRISP-сообщение
+2025-05-20 20:47:01 TRACE main.c:211: данные были успешно декодированы из CRISP-сообщения
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[0] == pt[0]: 4c == 4c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[1] == pt[1]: 61 == 61
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[2] == pt[2]: 64 == 64
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[3] == pt[3]: 69 == 69
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[4] == pt[4]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[5] == pt[5]: 73 == 73
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[6] == pt[6]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[7] == pt[7]: 61 == 61
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[8] == pt[8]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[9] == pt[9]: 64 == 64
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[10] == pt[10]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[11] == pt[11]: 47 == 47
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[12] == pt[12]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[13] == pt[13]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[14] == pt[14]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[15] == pt[15]: 6c == 6c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[16] == pt[16]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[17] == pt[17]: 6d == 6d
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[18] == pt[18]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[19] == pt[19]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[20] == pt[20]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[21] == pt[21]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[22] == pt[22]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[23] == pt[23]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[24] == pt[24]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[25] == pt[25]: 68 == 68
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[26] == pt[26]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[27] == pt[27]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[28] == pt[28]: 63 == 63
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[29] == pt[29]: 6c == 6c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[30] == pt[30]: 61 == 61
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[31] == pt[31]: 73 == 73
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[32] == pt[32]: 73 == 73
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[33] == pt[33]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[34] == pt[34]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[35] == pt[35]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[36] == pt[36]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[37] == pt[37]: 27 == 27
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[38] == pt[38]: 39 == 39
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[39] == pt[39]: 39 == 39
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[40] == pt[40]: 3a == 3a
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[41] == pt[41]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[42] == pt[42]: 49 == 49
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[43] == pt[43]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[44] == pt[44]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[45] == pt[45]: 49 == 49
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[46] == pt[46]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[47] == pt[47]: 63 == 63
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[48] == pt[48]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[49] == pt[49]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[50] == pt[50]: 6c == 6c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[51] == pt[51]: 64 == 64
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[52] == pt[52]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[53] == pt[53]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[54] == pt[54]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[55] == pt[55]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[56] == pt[56]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[57] == pt[57]: 72 == 72
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[58] == pt[58]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[59] == pt[59]: 79 == 79
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[60] == pt[60]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[61] == pt[61]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[62] == pt[62]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[63] == pt[63]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[64] == pt[64]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[65] == pt[65]: 6c == 6c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[66] == pt[66]: 79 == 79
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[67] == pt[67]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[68] == pt[68]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[69] == pt[69]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[70] == pt[70]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[71] == pt[71]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[72] == pt[72]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[73] == pt[73]: 69 == 69
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[74] == pt[74]: 70 == 70
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[75] == pt[75]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[76] == pt[76]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[77] == pt[77]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[78] == pt[78]: 72 == 72
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[79] == pt[79]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[80] == pt[80]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[81] == pt[81]: 68 == 68
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[82] == pt[82]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[83] == pt[83]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[84] == pt[84]: 66 == 66
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[85] == pt[85]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[86] == pt[86]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[87] == pt[87]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[88] == pt[88]: 72 == 72
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[89] == pt[89]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[90] == pt[90]: 2c == 2c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[91] == pt[91]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[92] == pt[92]: 73 == 73
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[93] == pt[93]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[94] == pt[94]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[95] == pt[95]: 73 == 73
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[96] == pt[96]: 63 == 63
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[97] == pt[97]: 72 == 72
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[98] == pt[98]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[99] == pt[99]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[100] == pt[100]: 6e == 6e
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[101] == pt[101]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[102] == pt[102]: 77 == 77
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[103] == pt[103]: 6f == 6f
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[104] == pt[104]: 75 == 75
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[105] == pt[105]: 6c == 6c
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[106] == pt[106]: 64 == 64
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[107] == pt[107]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[108] == pt[108]: 62 == 62
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[109] == pt[109]: 65 == 65
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[110] == pt[110]: 20 == 20
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[111] == pt[111]: 69 == 69
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[112] == pt[112]: 74 == 74
+2025-05-20 20:47:01 TRACE main.c:223: cm.payloadData[113] == pt[113]: 2e == 2e
+2025-05-20 22:43:15 WARN  main.c:52: хэш-сумма расходится в байтовой позиции i=0

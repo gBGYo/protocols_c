@@ -3,10 +3,10 @@ LDFLAGS = -L../libs
 CFLAGS = -Wall -Wextra -I../headers -O2
 
 lab1: main.o log.o
-	$(CC) $(LDFLAGS) -o $@ main.o log.o -lkuznyechik -lkdf_tree_gostr3411_2012_256 -lstreebog 
+	$(CC) $(LDFLAGS) -o $@ main.o log.o -lkuznyechik -lkdf_tree_gostr3411_2012_256 -lstreebog
 
 lab1_test: test.o log.o
-	$(CC) $(LDFLAGS) -o $@ test.o log.o -lkuznyechik -lkdf_tree_gostr3411_2012_256 -lstreebog 
+	$(CC) $(LDFLAGS) -o $@ test.o log.o -lkuznyechik -lkdf_tree_gostr3411_2012_256 -lstreebog
 
 # Compile source files
 %.o: %.c

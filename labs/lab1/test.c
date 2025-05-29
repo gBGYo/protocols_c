@@ -30,14 +30,14 @@ void encrypt_1Mb()
         perror("fopen");
         exit(1);
     }
-    FILE *f_out = fopen(path_out, "rwb");
+    FILE *f_out = fopen(path_out, "w+b");
     if (f_out == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_out);
         perror("fopen");
         exit(1);
     }
-    FILE *f_dec = fopen(path_dec, "wb");
+    FILE *f_dec = fopen(path_dec, "w+b");
     if (f_dec == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_dec);
@@ -80,14 +80,14 @@ void encrypt_100Mb()
         perror("fopen");
         exit(1);
     }
-    FILE *f_out = fopen(path_out, "rwb");
+    FILE *f_out = fopen(path_out, "w+b");
     if (f_out == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_out);
         perror("fopen");
         exit(1);
     }
-    FILE *f_dec = fopen(path_dec, "wb");
+    FILE *f_dec = fopen(path_dec, "w+b");
     if (f_dec == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_dec);
@@ -130,14 +130,14 @@ void encrypt_1000Mb()
         perror("fopen");
         exit(1);
     }
-    FILE *f_out = fopen(path_out, "rwb");
+    FILE *f_out = fopen(path_out, "w+b");
     if (f_out == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_out);
         perror("fopen");
         exit(1);
     }
-    FILE *f_dec = fopen(path_dec, "wb");
+    FILE *f_dec = fopen(path_dec, "w+b");
     if (f_dec == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_dec);
@@ -187,7 +187,7 @@ void encrypt_blocks_key_change(int cycles)
         perror("fopen");
         exit(1);
     }
-    FILE *f_dec = fopen(path_dec, "wb");
+    FILE *f_dec = fopen(path_dec, "w+b");
     if (f_dec == NULL)
     {
         fprintf(stderr, "fopen: %s\n", path_dec);
@@ -221,9 +221,9 @@ void run_test_suite()
     // encrypt_1Mb();
     // encrypt_100Mb();
     // encrypt_1000Mb();
-    encrypt_blocks_key_change(10);
+    // encrypt_blocks_key_change(10);
     // encrypt_blocks_key_change(100);
-    // encrypt_blocks_key_change(1000);
+    encrypt_blocks_key_change(1000);
 }
 
 int main()

@@ -14,13 +14,13 @@ __attribute__((optimize(0))) void get_initial_key(uint8_t *buf, ssize_t size)
     }
 }
 
-void generate_keys()
+void generate_keys(size_t count)
 {
     uint8_t key[32] = {0};
     // Получаем ключ из /dev/urandom
     get_initial_key(key, 32);
 
-    for (size_t i = 0; i < 10000; i++)
+    for (size_t i = 0; i < count; i++)
     {
         kdf_tree_gostr3411_2012_256(
             key, 32 * 8,
@@ -33,7 +33,9 @@ void generate_keys()
 
 void run_test_suite()
 {
-    generate_keys();
+    // generate_keys(10000);
+    generate_keys(100000);
+    // generate_keys(1000000);
 }
 
 int main()

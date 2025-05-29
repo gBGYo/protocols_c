@@ -87,11 +87,15 @@ int check_valid_user(struct passwd *pw)
             fclose(user_db_fp);
             return 1;
         }
+
         for (size_t j = 0; j < 32; j++)
         {
             if (username_digest[j] != tmp_digest[j])
             {
-                goto next_entry;
+                log_warn("неизвестная учетная запись `%s` попыталась получить доступ", pw->pw_name);
+                streebog_clear(&sb);
+                fclose(user_db_fp);
+                return 1;
             }
         }
 
@@ -99,13 +103,8 @@ int check_valid_user(struct passwd *pw)
         streebog_clear(&sb);
         fclose(user_db_fp);
         return 0;
-    next_entry:
     }
-
-    log_warn("неизвестная учетная запись `%s` попыталась получить доступ", pw->pw_name);
-    streebog_clear(&sb);
-    fclose(user_db_fp);
-    return 1;
+    return 0;
 }
 
 int check_key_expiration(uint8_t key[32])
@@ -203,6 +202,7 @@ int main(int argc, char **argv)
     {
         log_error("не удается открыть файл %s", argv[2]);
         kuz_clear_buf(key, 32);
+        fclose(in_fp);
         fclose(log_fp);
         return 1;
     }

@@ -45,6 +45,8 @@ extern "C"
     void streebog_clear_buf(uint8_t *buf, ssize_t size);
 
     void streebog_hmac_256(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, hmac_block_t out);
+    void streebog_prng_buf(uint8_t *buf, size_t buf_len);
+    void streebog_prng(FILE *fp, size_t len);
 
 #ifdef __cplusplus
 }
