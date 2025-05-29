@@ -47,19 +47,26 @@ __attribute__((optimize(0))) void magma_clear_buf(uint8_t *buf, ssize_t size)
  * @param magma Указатель на структуру Magma
  * @param key Ключ шифрования
  */
-void magma_new(Magma *magma, const uint8_t key[32])
+void magma_new(Magma *magma, const uint8_t key[32], const uint8_t iv[4])
 {
     magma_expand_key(&magma->iter_keys, key);
+    if (iv != NULL)
+    {
+        memcpy(magma->iv, iv, 4);
+    }
+    else
+    {
 #ifdef STATIC_IV
-    uint8_t iv[4] = {0x50, 0x04, 0xae, 0x49};
-    memcpy(magma->iv, iv, 4);
+        uint8_t static_iv[4] = {0x50, 0x04, 0xae, 0x49};
+        memcpy(magma->iv, static_iv, 4);
 #else
-    uint8_t iv[4];
-    magma_clear_buf(iv, 4);
-    memcpy(kuz->iv, iv, 4);
-    // Clear local iv
-    magma_clear_buf(iv, 4);
+        uint8_t random_iv[4];
+        magma_clear_buf(random_iv, 4);
+        memcpy(magma->iv, random_iv, 4);
+        // Clear local iv
+        magma_clear_buf(random_iv, 4);
 #endif
+    }
 }
 
 /**
@@ -274,10 +281,6 @@ void magma_ctr_encrypt(Magma *magma, const uint8_t *in, uint8_t *out, size_t len
     }
     magma_clear_buf(gamma, MAGMA_BLOCK_SIZE);
 }
-
-// void magma_ctr_encrypt(FILE *f_in, FILE *f_out, Magma *magma)
-// {
-// }
 
 /**
  * @brief Выработка имитовставки в режиме CMAC (ГОСТ 34.13-2018 секция 5.6)

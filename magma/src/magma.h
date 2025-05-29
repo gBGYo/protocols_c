@@ -29,7 +29,7 @@ extern "C"
     } Magma;
 
     void magma_expand_key(magma_iter_keys *iter_keys, const uint8_t key[32]);
-    void magma_new(Magma *magma, const uint8_t key[32]);
+    void magma_new(Magma *magma, const uint8_t key[32], const uint8_t iv[4]);
     void magma_clear(Magma *magma);
 
     void magma_add_mod32(const uint32_t *a, const uint32_t *b, uint32_t *out);

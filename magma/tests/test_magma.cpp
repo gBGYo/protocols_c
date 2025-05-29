@@ -147,8 +147,7 @@ TEST(MagmaTest, cipher_ctr)
     std::vector<uint8_t> expected_out = hex_to_bytes("4e98110c97b7b93c3e250d93d6e85d69136d868807b2dbef568eb680ab52a12d");
     uint8_t out[32] = {0};
     Magma magma = {0};
-    magma_new(&magma, k_bytes.data());
-    memcpy(magma.iv, iv.data(), 4);
+    magma_new(&magma, k_bytes.data(), iv.data());
 
     magma_ctr_encrypt(&magma, in.data(), out, in.size());
     for (size_t i = 0; i < expected_out.capacity(); i++)
@@ -166,8 +165,7 @@ TEST(MagmaTest, cipher_cmac)
     uint8_t expected_out[4] = {0x15, 0x4e, 0x72, 0x10};
     uint8_t out[4] = {0};
     Magma magma = {0};
-    magma_new(&magma, k_bytes.data());
-    memcpy(magma.iv, iv.data(), 4);
+    magma_new(&magma, k_bytes.data(), iv.data());
 
     magma_cmac(&magma, in.data(), in.size(), out, 32);
     for (size_t i = 0; i < 4; i++)
