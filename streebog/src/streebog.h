@@ -26,11 +26,12 @@ extern "C"
         streebog_block_t N;
         streebog_block_t Sigma;
     } Streebog;
+    void streebog_clear(Streebog *sb);
 
     void streebog_X(const uint8_t *a, const uint8_t *b, uint8_t *out, size_t size);
     void streebog_P(streebog_block_t a, size_t size);
     void streebog_L(streebog_block_t a);
-    void streebog_Add_mod512(streebog_block_t a, streebog_block_t b, streebog_block_t out);
+    void streebog_add_mod512(streebog_block_t a, streebog_block_t b, streebog_block_t out);
     void streebog_E(streebog_block_t K, const streebog_block_t m, streebog_block_t out);
     void streebog_g(streebog_block_t h, const streebog_block_t m, streebog_block_t N);
 
@@ -44,6 +45,8 @@ extern "C"
     void streebog_clear_buf(uint8_t *buf, ssize_t size);
 
     void streebog_hmac_256(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, hmac_block_t out);
+    void streebog_prng_buf(uint8_t *buf, size_t buf_len);
+    void streebog_prng(FILE *fp, size_t len);
 
 #ifdef __cplusplus
 }

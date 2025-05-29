@@ -1,8 +1,8 @@
 #include "streebog.h"
 
-// Секция 5.2
-// Нелинейное биективное преобразование
-// \pi' = (\pi'(0), \pi'(1), ..., \pi'(255))
+/**
+ * @brief Нелинейное биективное преобразование (секция 5.2)
+ */
 static const uint8_t streebog_Pi[256] = {
     0xfc, 0xee, 0xdd, 0x11, 0xcf, 0x6e, 0x31, 0x16, 0xfb, 0xc4, 0xfa, 0xda, 0x23, 0xc5, 0x04, 0x4d,
     0xe9, 0x77, 0xf0, 0xdb, 0x93, 0x2e, 0x99, 0xba, 0x17, 0x36, 0xf1, 0xbb, 0x14, 0xcd, 0x5f, 0xc1,
@@ -21,7 +21,9 @@ static const uint8_t streebog_Pi[256] = {
     0x20, 0x71, 0x67, 0xa4, 0x2d, 0x2b, 0x09, 0x5b, 0xcb, 0x9b, 0x25, 0xd0, 0xbe, 0xe5, 0x6c, 0x52,
     0x59, 0xa6, 0x74, 0xd2, 0xe6, 0xf4, 0xb4, 0xc0, 0xd1, 0x66, 0xaf, 0xc2, 0x39, 0x4b, 0x63, 0xb6};
 
-// Преобразование байт из секции 5.3
+/**
+ * @brief Перестановка байт (секций 5.3)
+ */
 static const uint8_t streebog_Tau[64] = {
     0x00, 0x08, 0x10, 0x18, 0x20, 0x28, 0x30, 0x38,
     0x01, 0x09, 0x11, 0x19, 0x21, 0x29, 0x31, 0x39,
@@ -32,6 +34,9 @@ static const uint8_t streebog_Tau[64] = {
     0x06, 0x0e, 0x16, 0x1e, 0x26, 0x2e, 0x36, 0x3e,
     0x07, 0x0f, 0x17, 0x1f, 0x27, 0x2f, 0x37, 0x3f};
 
+/**
+ * @brief Строки матрицы (секция 5.4)
+ */
 static const uint64_t streebog_A[64] = {
     0x8e20faa72ba0b470,
     0x47107ddd9b505a38,
@@ -98,6 +103,9 @@ static const uint64_t streebog_A[64] = {
     0xc83862965601dd1b,
     0x641c314b2b8ee083};
 
+/**
+ * @brief Итерационные константы (секция 5.5)
+ */
 static const uint8_t streebog_C[12][64] = {
     {0x07, 0x45, 0xa6, 0xf2, 0x59, 0x65, 0x80, 0xdd,
      0x23, 0x4d, 0x74, 0xcc, 0x36, 0x74, 0x76, 0x05,
@@ -196,6 +204,9 @@ static const uint8_t streebog_C[12][64] = {
      0x7a, 0xb1, 0x49, 0x04, 0xb0, 0x80, 0x13, 0xd2,
      0xba, 0x31, 0x16, 0xf1, 0x67, 0xe7, 0x8e, 0x37}};
 
+/**
+ * @brief Вектор выравнивания
+ */
 static const uint8_t ipad[64] = {
     0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36,
     0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36,
@@ -206,6 +217,9 @@ static const uint8_t ipad[64] = {
     0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36,
     0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36, 0x36};
 
+/**
+ * @brief Вектор выравнивания
+ */
 static const uint8_t opad[64] = {
     0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c,
     0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c, 0x5c,
@@ -220,12 +234,26 @@ static streebog_block_t value_512;
 static streebog_block_t value_0;
 
 /**
+ * @brief Очистка экземпляра структуры Streebog
+ *
+ * @param sb Указатель на структуру Streebog
+ */
+void streebog_clear(Streebog *sb)
+{
+    streebog_clear_buf(sb->h, STREEBOG_BLOCK_SIZE);
+    streebog_clear_buf(sb->N, STREEBOG_BLOCK_SIZE);
+    streebog_clear_buf(sb->Sigma, STREEBOG_BLOCK_SIZE);
+}
+
+/**
  * @brief Вычисляет поэлементный XOR двух массивов
  *
- * @param a Первый массив
- * @param b Второй массив
- * @param out Массив для записи результата
+ * @param a Первый массив размера `size`
+ * @param b Второй массив размера `size`
+ * @param out Массив размера `size` для записи результата
  * @param size Размер массивов
+ *
+ * @return out = a xor b
  */
 inline void streebog_X(const uint8_t *a, const uint8_t *b, uint8_t *out, size_t size)
 {
@@ -235,11 +263,14 @@ inline void streebog_X(const uint8_t *a, const uint8_t *b, uint8_t *out, size_t 
     }
 }
 
-// Преобразование S из секции 6
-// Аргументы:
-//     a - блок из 64 байт
-// Возвращаемое значение:
-//     S(a)
+/**
+ * @brief Преобразование S (секция 6)
+ *
+ * @param a Блок размера `size` байт
+ * @param size Размер блока в байтах
+ *
+ * @return a = S(a)
+ */
 #define streebog_S(a, size)                                                                                                                                 \
     do                                                                                                                                                      \
     {                                                                                                                                                       \
@@ -249,11 +280,14 @@ inline void streebog_X(const uint8_t *a, const uint8_t *b, uint8_t *out, size_t 
         }                                                                                                                                                   \
     } while (0)
 
-// Преобразование P из секции 6
-// Аргументы:
-//     a - блок из 64 байт
-// Возвращаемое значение:
-//     P(a)
+/**
+ * @brief Преобразование P (секция 6)
+ *
+ * @param a Блок размера `size` байт
+ * @param size Размер блока в байтах
+ *
+ * @param a = P(a)
+ */
 void streebog_P(streebog_block_t a, size_t size)
 {
     streebog_block_t tmp;
@@ -264,11 +298,13 @@ void streebog_P(streebog_block_t a, size_t size)
     memcpy(a, tmp, size);
 }
 
-// Преобразование L из секции 6
-// Аргументы:
-//     a - блок из 64 байт
-// Возвращаемое значение:
-//     L(a)
+/**
+ * @brief Преобразование L (секция 6)
+ *
+ * @param a Блок размера 64 байт
+ *
+ * @return a = L(a)
+ */
 void streebog_L(streebog_block_t a)
 {
     uint64_t *in = (uint64_t *)a;
@@ -288,27 +324,31 @@ void streebog_L(streebog_block_t a)
     memcpy(a, out, STREEBOG_BLOCK_SIZE);
 }
 
-// Сложение чисел по модулю 2^{512}
-// Аргументы:
-//     a, b, out - блоки из 64 байт
-// Возвращаемое значение:
-//     out = a + b
-void streebog_Add_mod512(streebog_block_t a, streebog_block_t b, streebog_block_t out)
+/**
+ * @brief Сложение чисел по модулю 2^{512}
+ *
+ * @param a Первое число
+ * @param b Второе число
+ * @param out Буфер для хранения суммы
+ *
+ * @return out = (a+b) (mod 2^{512})
+ */
+void streebog_add_mod512(streebog_block_t a, streebog_block_t b, streebog_block_t out)
 {
-    int internal = 0;
+    int tmp = 0;
     for (int i = 0; i < 64; i++)
     {
-        internal = a[i] + b[i] + (internal >> 8);
-        out[i] = internal & 0xff;
+        tmp = a[i] + b[i] + (tmp >> 8);
+        out[i] = tmp & 0xff;
     }
 }
 
-// Очистка буфера путем перезаписи его случайными значениями
-// Аргументы:
-//     buf - указатель на буфер
-//     size - размер буфера
-// Возвращаемое значение:
-//     buf перезаписывается случайными значениями
+/**
+ * @brief Перезапись буфера случайными значениями из /dev/urandom
+ *
+ * @param buf Указатель на участок памяти для перезаписи
+ * @param size Количество байтов для перезаписи
+ */
 __attribute__((optimize(0))) void streebog_clear_buf(uint8_t *buf, ssize_t size)
 {
     if (getrandom(buf, size, 0) != size)
@@ -318,13 +358,15 @@ __attribute__((optimize(0))) void streebog_clear_buf(uint8_t *buf, ssize_t size)
     }
 }
 
-// Функция E из секции 7
-// Аргументы:
-//     K - блок из 64 байт
-//     m - блок из 64 байт
-//     out - блок из 64 байт
-// Возвращаемое значение:
-//     out = E(K, m)
+/**
+ * @brief Функция E(K,m) (секция 7)
+ *
+ * @param K Блок размера 64 байт
+ * @param m Блок размера 64 байт
+ * @param out Буфер для хранения результата
+ *
+ * @return out = E(K,m)
+ */
 void streebog_E(streebog_block_t K, const streebog_block_t m, streebog_block_t out)
 {
     // K_1 = K
@@ -348,13 +390,15 @@ void streebog_E(streebog_block_t K, const streebog_block_t m, streebog_block_t o
     }
 }
 
-// Функция g из секции 7
-// Аргументы:
-//     h - блок из 64 байт
-//     m - блок из 64 байт
-//     N - блок из 64 байт
-// Возвращаемое значение:
-//     h = g_N(h, m)
+/**
+ * @brief Функция сжатия g (секция 7)
+ *
+ * @param h Блок размера 64 байт
+ * @param m Блок размера 64 байт
+ * @param N Блок размера 64 байт
+ *
+ * @return h = g_N(h, m)
+ */
 void streebog_g(streebog_block_t h, const streebog_block_t m, streebog_block_t N)
 {
     streebog_block_t K, tmp;
@@ -371,11 +415,11 @@ void streebog_g(streebog_block_t h, const streebog_block_t m, streebog_block_t N
     streebog_X(tmp, m, h, STREEBOG_BLOCK_SIZE);
 }
 
-// Этап 1 из секции 8.1
-// Аргументы:
-//     sb - указатель на структуру Streebog
-// Возвращаемое значение:
-//     sb->h, sb->N, sb->Sigma инициализируются
+/**
+ * @brief Этап 1 (секция 8.1)
+ *
+ * @param sb Указатель на структуру Streebog
+ */
 void streebog_new(Streebog *sb)
 {
 #ifdef STREEBOG_512
@@ -401,27 +445,29 @@ void streebog_new(Streebog *sb)
 }
 #define streebog_reset(sb) streebog_new(sb)
 
-// Этап 2 из секции 8.2
-// Аргументы:
-//     sb - указатель на структуру Streebog
-//     m - блок данных
+/**
+ * @brief Этап 2 (секция 8.2)
+ *
+ * @param sb Указатель на структуру Streebog
+ * @param m Блок данных размером 64 байт
+ */
 void streebog_stage2(Streebog *sb, streebog_block_t m)
 {
     // Шаг 2.3
     streebog_g(sb->h, m, sb->N);
     // Шаг 2.4
-    streebog_Add_mod512(sb->N, value_512, sb->N);
+    streebog_add_mod512(sb->N, value_512, sb->N);
     // Шаг 2.5
-    streebog_Add_mod512(sb->Sigma, m, sb->Sigma);
+    streebog_add_mod512(sb->Sigma, m, sb->Sigma);
 }
 
-// Этап 3 из секции 8.3
-// Аргументы:
-//     sb - указатель на структуру Streebog
-//     m - блок данных
-//     size - размер блока данных
-// Возвращаемое значение:
-//     sb->Sigma
+/**
+ * @brief Этап 3 (секция 8.3)
+ *
+ * @param sb Указатель на структуру Streebog
+ * @param m Блок данных размером `size` байт
+ * @param size Размер блока в байтах
+ */
 void streebog_stage3(Streebog *sb, streebog_block_t m, size_t size)
 {
     // Шаг 3.1
@@ -436,20 +482,22 @@ void streebog_stage3(Streebog *sb, streebog_block_t m, size_t size)
     memset(tmp, 0, STREEBOG_BLOCK_SIZE);
     tmp[1] = ((size * 8) >> 8) & 0xff;
     tmp[0] = (size * 8) & 0xff;
-    streebog_Add_mod512(sb->N, tmp, sb->N);
+    streebog_add_mod512(sb->N, tmp, sb->N);
     // Шаг 3.4
-    streebog_Add_mod512(sb->Sigma, m, sb->Sigma);
+    streebog_add_mod512(sb->Sigma, m, sb->Sigma);
     // Шаг 3.5
     streebog_g(sb->h, sb->N, value_0);
     // Шаг 3.6
     streebog_g(sb->h, sb->Sigma, value_0);
 }
 
-// Хэширование содержимого файла
-// Аргументы:
-//     sb - указатель на структуру Streebog
-//     f_in - файл, содержимое которого хэшируется
-//     f_out - файл, в который записывается результат хэширования
+/**
+ * @brief Хэширование содержимого файла
+ *
+ * @param sb Указатель на структуру
+ * @param f_in Файловый указатель на входные данные
+ * @param f_out Файловый указатель на выходные данные
+ */
 void streebog_hash_file(Streebog *sb, FILE *f_in, FILE *f_out)
 {
     uint8_t buf[STREEBOG_BLOCK_SIZE];
@@ -473,6 +521,14 @@ void streebog_hash_file(Streebog *sb, FILE *f_in, FILE *f_out)
 #endif
 }
 
+/**
+ * @brief Хэширование содержимого массива
+ *
+ * @param sb Указатель на структуру Streebog
+ * @param array Массив входных данных размера `len`
+ * @param len Размера массива в байтах
+ * @param out Массив выходных данных размера 32/64 байт
+ */
 void streebog_hash_array(Streebog *sb, uint8_t *array, size_t len, uint8_t *out)
 {
     uint8_t buf[STREEBOG_BLOCK_SIZE];
@@ -491,6 +547,7 @@ void streebog_hash_array(Streebog *sb, uint8_t *array, size_t len, uint8_t *out)
 #else
     memcpy(out, &sb->h[32], 32);
 #endif
+    streebog_clear_buf(buf, STREEBOG_BLOCK_SIZE);
 }
 
 /**
@@ -541,4 +598,129 @@ void streebog_hmac_256(const uint8_t *key, size_t key_len, const uint8_t *data, 
 
     streebog_clear_buf(tmp, 64 + tail);
     free(tmp);
+}
+
+/**
+ * @brief Сложение чисел по модулю 2^{504}
+ *
+ * @param a Первое число
+ * @param b Второе число
+ * @param out Буфер для хранения суммы
+ *
+ * @return out = (a+b) (mod 2^{504})
+ */
+void streebog_add_mod504(uint8_t *a, uint8_t *b, uint8_t *out)
+{
+    uint8_t tmp_out[63] = {0};
+    int tmp = 0;
+    for (int i = 0; i < 63; i++)
+    {
+        tmp = a[i] + b[i] + (tmp >> 8);
+        tmp_out[i] = tmp & 0xff;
+    }
+    memcpy(out, tmp_out, 63);
+}
+
+/**
+ * @brief Механизм выработки псевдослучайных последоватльностей на основе функции Стрибог
+ *
+ * @param buf Указатель на буфер для хранения сгенерированной последовательности
+ * @param buf_len Длина необходимой последовательности в байтах
+ */
+void streebog_prng_buf(uint8_t *buf, size_t buf_len)
+{
+    Streebog sb = {0};
+    streebog_new(&sb);
+
+    size_t h = 32;
+    size_t q = buf_len / h;
+    size_t r = buf_len % h;
+
+    // Шаг 1
+    memset(buf, 0, buf_len); // R = \Theta
+    // Шаг 2
+    uint8_t K[32] = {0}; // K ∈ V_s, s = 256
+    streebog_clear_buf(K, 32);
+
+    // Шаг 3
+    uint8_t U[63] = {0};
+    memcpy(U, K, 32); // U_0 = K || 0^l
+
+    // Шаг 4
+    uint8_t C[32] = {0};
+    uint8_t one[63] = {0};
+    one[62] = 1;
+    size_t offset = 0;
+    for (size_t i = 0; i < q; i++)
+    {
+        streebog_add_mod504(U, one, U);     // U_i = U_{i-1} + 1 mod 2^504
+        streebog_hash_array(&sb, U, 63, C); // C_i = H(U_i)
+        memcpy(buf + offset, C, h);         // R = C_i || ...
+        offset += h;
+    }
+
+    // Шаг 6
+    if (r > 0)
+    {
+        streebog_add_mod504(U, one, U);     // U_{q+1}
+        streebog_hash_array(&sb, U, 63, C); // C_{q+1}
+        memcpy(buf + offset, C, r);         // LSB_r(C_{q+1})
+    }
+
+    streebog_clear_buf(one, 63);
+    streebog_clear_buf(C, 32);
+    streebog_clear_buf(U, 63);
+    streebog_clear_buf(K, 32);
+    streebog_clear(&sb);
+}
+
+/**
+ * @brief Механизм выработки псевдослучайных последоватльностей на основе функции Стрибог
+ *
+ * @param fp Указатель на файл
+ * @param len Длина необходимой последовательности в байтах
+ */
+void streebog_prng(FILE *fp, size_t len)
+{
+    Streebog sb = {0};
+    streebog_new(&sb);
+
+    size_t h = 32;
+    size_t q = len / h;
+    size_t r = len % h;
+
+    // Шаг 1
+    // memset(buf, 0, len); // R = \Theta
+    // Шаг 2
+    uint8_t K[32] = {0}; // K ∈ V_s, s = 256
+    streebog_clear_buf(K, 32);
+
+    // Шаг 3
+    uint8_t U[63] = {0};
+    memcpy(U, K, 32); // U_0 = K || 0^l
+
+    // Шаг 4
+    uint8_t C[32] = {0};
+    uint8_t one[63] = {0};
+    one[62] = 1;
+    for (size_t i = 0; i < q; i++)
+    {
+        streebog_add_mod504(U, one, U);     // U_i = U_{i-1} + 1 mod 2^504
+        streebog_hash_array(&sb, U, 63, C); // C_i = H(U_i)
+        fwrite(C, sizeof(uint8_t), h, fp);
+    }
+
+    // Шаг 6
+    if (r > 0)
+    {
+        streebog_add_mod504(U, one, U);     // U_{q+1}
+        streebog_hash_array(&sb, U, 63, C); // C_{q+1}
+        fwrite(C, sizeof(uint8_t), r, fp);
+    }
+
+    streebog_clear_buf(one, 63);
+    streebog_clear_buf(C, 32);
+    streebog_clear_buf(U, 63);
+    streebog_clear_buf(K, 32);
+    streebog_clear(&sb);
 }

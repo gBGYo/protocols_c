@@ -287,3 +287,40 @@ void crisp_decode(Crisp *crisp, const uint8_t *raw_crisp_message, uint16_t raw_c
     streebog_clear_buf(K_enc, 32);
     streebog_clear_buf(derived_key, 64);
 }
+
+/**
+ * @brief Процедура аутентификации сообщения
+ */
+void crisp_auth(Crisp *crisp, const uint8_t *raw_crisp_message, uint16_t raw_crisp_message_len)
+{
+    uint8_t derived_key[64] = {0};
+    kdf_tree_gostr3411_2012_256(
+        crisp->key, 256,
+        label, sizeof(label) / sizeof(label[0]),
+        crisp->seed, sizeof(crisp->seed) / sizeof(crisp->seed[0]),
+        1,
+        derived_key, 512);
+
+    uint8_t K_enc[32] = {0};
+    uint8_t K_mac[32] = {0};
+    memcpy(K_enc, derived_key, 32);
+    memcpy(K_mac, derived_key + 32, 32);
+
+    Streebog sb = {0};
+    streebog_new(&sb);
+    uint8_t calc_mac[32] = {0};
+    streebog_hmac_256(K_mac, 256, raw_crisp_message, raw_crisp_message_len - cs_to_icv_map[5], calc_mac);
+    for (size_t i = 0; i < 32; i++)
+    {
+        if (calc_mac[i] != raw_crisp_message[raw_crisp_message_len - cs_to_icv_map[5] + i])
+        {
+            fprintf(stderr, "CRISP ICV mismatch (at index i=%ld): calculated = %02x, message = %02x\n", i, calc_mac[i], raw_crisp_message[raw_crisp_message_len - cs_to_icv_map[5] + i]);
+            return;
+        }
+    }
+
+    streebog_clear(&sb);
+    streebog_clear_buf(K_mac, 32);
+    streebog_clear_buf(K_enc, 32);
+    streebog_clear_buf(derived_key, 64);
+}

@@ -32,7 +32,7 @@ $(LIB_NAME): $(LIB_OBJS)
 
 # Build the main program
 $(MAIN_EXE): $(MAIN_OBJ) $(LIB_NAME)
-	$(CC) $(LDFLAGS) -o $@ $(MAIN_OBJ) $(LDLIBS) -ggdb
+	$(CC) $(LDFLAGS) -o $@ $(MAIN_OBJ) $(LDLIBS)
 
 # Build and run tests
 test: $(TEST_EXE)
@@ -43,7 +43,7 @@ $(TEST_EXE): $(TEST_OBJS) $(LIB_NAME)
 
 # Compile source files
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -ggdb
+	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

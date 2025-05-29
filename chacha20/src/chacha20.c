@@ -32,6 +32,18 @@ void chacha_new(ChaCha20 *chacha, const uint8_t *key, const uint32_t *nonce, uin
 }
 
 /**
+ * @brief Очистка экземпляра структуры `ChaCha20`.
+ *
+ * @param chacha Указатель на структуру `ChaCha20`.
+ */
+void chacha_clear(ChaCha20 *chacha)
+{
+    chacha_clear_buf(chacha->key, 32 * sizeof(uint8_t));
+    chacha_clear_buf((uint8_t *)chacha->nonce, 3 * sizeof(uint32_t));
+    chacha->counter = 0;
+}
+
+/**
  * @brief Выполняет один раунд ChaCha20 --- QUARTERROUND(a, b, c, d).
  */
 static inline void chacha_quarter_round(uint32_t *a, uint32_t *b, uint32_t *c, uint32_t *d)
@@ -141,11 +153,11 @@ void chacha_encrypt(ChaCha20 *chacha, const uint8_t *plain_text, uint8_t *cipher
 }
 
 /**
- * @brief Генерирует случайные байты с помощью ChaCha20.
+ * @brief Генерирует случайные байты с помощью ChaCha20
  *
- * @param chacha Указатель на структуру `ChaCha20`.
- * @param rand_bytes Указатель на массив для хранения случайных байтов.
- * @param len Длина массива `rand_bytes`.
+ * @param chacha Указатель на структуру `ChaCha20`
+ * @param fp Файловый указатель на массив для хранения случайных байтов
+ * @param len Длина генерируемой последовательности байт
  */
 void chacha_prng(ChaCha20 *chacha, FILE *fp, size_t len)
 {

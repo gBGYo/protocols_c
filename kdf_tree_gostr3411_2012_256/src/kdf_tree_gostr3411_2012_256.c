@@ -70,8 +70,8 @@ void kdf_tree_gostr3411_2012_256(
 
         streebog_hmac_256(key, key_len, buf, buf_len, derived_key + (i * 32));
 
-        streebog_clear_buf(i_byte, sizeof(uint8_t) * R);
         streebog_clear_buf(L_byte, sizeof(uint8_t) * L_len);
+        streebog_clear_buf(i_byte, sizeof(uint8_t) * R);
         streebog_clear_buf(buf, sizeof(uint8_t) * buf_len);
 
         free(L_byte);

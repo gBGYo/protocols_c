@@ -81,6 +81,8 @@ extern "C"
     void crisp_encode(Crisp *crisp, const uint8_t *data, size_t data_size, uint8_t *raw_crisp_message, uint16_t *raw_crisp_message_len);
     void crisp_decode(Crisp *crisp, const uint8_t *raw_crisp_message, uint16_t raw_crisp_message_len, CrispMessage *crisp_message);
 
+    void crisp_auth(Crisp *crisp, const uint8_t *raw_crisp_message, uint16_t raw_crisp_message_len);
+
 #ifdef __cplusplus
 }
 #endif
